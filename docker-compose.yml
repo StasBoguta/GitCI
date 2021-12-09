@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    image: python-docker
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    links:
+      - mongo
+    depends_on:
+      - mongo
+      - redis
+    networks: 
+      - backend
+  mongo:
+    container_name: mongohost
+    image: mongo
+    volumes:
+      - mongo-data:/data/db
+      - mongo-configdb:/data/configdb
+    networks: 
+      - backend
+  redis:
+    container_name: redishost
+    image: redis
+    volumes:
+      - ./data:/data
+    networks: 
+      - backend
+volumes:
+  mongo-data:
+  mongo-configdb:
+networks:
+  backend:
+    driver: "bridge"

@@ -1,0 +1,14 @@
+name: 'Test'
+description: 'Some description'
+branding:
+  icon: 'command'
+  cikir: 'red'
+inputs:
+  command: 
+    description: 'tests comands to run'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{inputs.command}}
