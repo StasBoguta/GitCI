@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: 3.6
       - name: Build
-        run: docker build -t ${{ github.sha }} -f Dockerfile.core
+        run: docker build -t ${{ github.sha }} -f Dockerfile .
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
