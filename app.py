@@ -65,8 +65,13 @@ def getStudent():
     return jsonify({"type":"from cache", "student":[student]})
 
 
+def some_method_for_test(n):
+    return n*2
+
 @app.route("/deleteAll", methods=['DELETE'])
 def deleteAll():
     mycol.delete_many({})
     return "Deleted"
-app.run()
+
+if __name__ == '__main__':
+    app.run()
